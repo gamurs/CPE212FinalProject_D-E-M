@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Opsfolio | CPE 212 Group Portfolio</title>
+<title>CPE 212 Group Portfolio | Group 6</title>
 <style>
 :root {
   --navy: #091722;
@@ -41,11 +41,38 @@ button { cursor: pointer; }
 .hero h1 { font-size: clamp(48px, 7vw, 82px); line-height: .87; letter-spacing: -.075em; margin: 30px 0 28px; font-weight: 900; }
 .hero h1 em { font-family: Georgia, serif; font-weight: 400; color: var(--lime); letter-spacing: -.06em; }
 .hero p { max-width: 480px; color: #b5c3ce; line-height: 1.7; font-size: 15px; }
-.orbit { width: min(330px, 75vw); aspect-ratio: 1; border: 1px solid rgba(220, 235, 245, .24); border-radius: 50%; margin: auto; position: relative; display: grid; place-items: center; }
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.orbit { width: min(330px, 75vw); aspect-ratio: 1; border: 1px solid rgba(220, 235, 245, .24); border-radius: 50%; margin: auto;
+  position: relative; display: grid; place-items: center; animation: spin 20s linear infinite;}
 .orbit:before, .orbit:after { content: ""; position: absolute; border: 1px dashed rgba(220, 235, 245, .2); border-radius: 50%; }
 .orbit:before { inset: 11%; }
 .orbit:after { inset: 24%; border-style: solid; }
-.orbit-center { width: 88px; height: 88px; border-radius: 50%; background: #06111a; display: grid; place-items: center; }
+@keyframes looseSpinCombine {
+  0% {
+    transform: rotate(0deg) translateY(0px) scale(1);
+  }
+  25% {
+    transform: rotate(100deg) translateY(-7px) scale(1.04);
+  }
+  50% {
+    transform: rotate(180deg) translateY(0px) scale(1);
+  }
+  75% {
+    transform: rotate(260deg) translateY(7px) scale(0.96);
+  }
+  100% {
+    transform: rotate(360deg) translateY(0px) scale(1);
+  }
+}
+.orbit-center { width: 88px;height: 88px;border-radius: 50%;background: #06111a;display: grid;place-items: center;
+  animation: looseSpinCombine 12s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;}
 .orbit-center .mark { transform: scale(1.8) rotate(-7deg); }
 .dot { position: absolute; width: 9px; height: 9px; border-radius: 50%; background: var(--lime); right: 5%; bottom: 27%; box-shadow: 0 0 18px #d9ff45; }
 .dot.blue { background: var(--blue); left: 27%; bottom: 14%; box-shadow: 0 0 18px var(--blue); }
@@ -173,7 +200,7 @@ button { cursor: pointer; }
       <div>
         <div class="eyebrow">CPE 212 · Group Portfolio</div>
         <h1>We build.<br>We automate.<br><em>We deliver.</em></h1>
-        <p>A collection of our hands-on activities, examinations, and lessons learned in managing enterprise servers.</p>
+        <p>A collection of our hands-on activities, examinations, and lessons learned in automating server management.</p>
       </div>
       <div class="orbit">
         <div class="orbit-center"><i class="mark"></i></div>
@@ -211,7 +238,7 @@ button { cursor: pointer; }
         <button class="member" style="--accent:var(--coral)" data-member="2">
           <span class="number">03</span>
           <span class="avatar">KE</span>
-          <strong>Keanne Estrabo</strong>
+          <strong>Keane Estrabo</strong>
           <span class="role">Automation &amp; Quality</span>
           <span class="arrow">↗</span>
         </button>
@@ -227,7 +254,7 @@ button { cursor: pointer; }
         <div class="switches">
           <button class="switch active" data-member="0"><b>BD</b> Beatrice Gillianne Dueñas</button>
           <button class="switch" data-member="1"><b>GM</b> Gary Abraham Muralla</button>
-          <button class="switch" data-member="2"><b>KE</b> Keanne Estrabo</button>
+          <button class="switch" data-member="2"><b>KE</b> Keane Estrabo</button>
         </div>
       </div>
 
@@ -282,7 +309,7 @@ button { cursor: pointer; }
             <span>−</span>
           </button>
           <div class="reflection-body">
-            Developing proficiency in Linux system administration and infrastructure documentation provided crucial foundations for automating complex deployments. Navigating permissions, service configs, and playbook orchestration highlighted the power of consistency across production nodes.
+            This final project in course CPE212 helped me understand more how ansible and docker works. Through Docker, I learned how containerization ensures consistent application deployment across different operating systems. Meanwhile, using Ansible improved my understanding of automation through playbooks, inventory files, YAML syntax, and conditional tasks. Although I encountered challenges such as connection errors, permission issues, and configuration mistakes, troubleshooting these problems strengthened my technical and problem-solving skills. I also recognized the importance of teamwork, communication, and proper task distribution throughout the project. This final project helped us understand how Docker and Ansible contribute to efficient, consistent, and reliable server management in real-world environments/experiences.
           </div>
         </div>
         <div class="reflection-item">
@@ -291,16 +318,16 @@ button { cursor: pointer; }
             <span>+</span>
           </button>
           <div class="reflection-body">
-            Mastering container isolation with Docker Engine and orchestrating services via Compose showed how runtime encapsulation bypasses host OS fragmentation. Ansible automation tied the entire delivery workflow together seamlessly.
+            This class on automating server management has been very helpful in introducing me to large-scale automation of configuration through the use of Ansible, and large-scale deployment through the use of Docker. I've learned a lot from installing specific software onto different OS distributions using Ansible to deploying containerized applications with the use of Dockerfile and Docker Compose. It was very fun learning about the different enterprise monitoring tools such as Prometheus and NagiOS and despite the trouble I initially had with setting up their installation in Ansible, it was still very interesting how enterprises can automate these tasks. I've also developed my skill in reading through different documentations so as to learn how to install or even what parameters different functions and modules take to run different commands. Overall, this course has been both very entertaining and satisfying moving up from bash scripts and linux commands in my previous system administration course.
           </div>
         </div>
         <div class="reflection-item">
           <button class="reflection-toggle">
-            <span>Keanne Estrabo</span>
+            <span>Keane Estrabo</span>
             <span>+</span>
           </button>
           <div class="reflection-body">
-            Validating automation playbooks across diverse operating system architectures demonstrated the importance of dynamic fact gathering and conditional execution in keeping deployments reliable.
+            Working on this final project significantly broadened my practical understanding of containerization and system automation. Through Docker, I saw firsthand how packaging an application into containers solves environment inconsistencies across different operating systems. Managing Ansible enhanced my ability to structure automated workflows using playbooks, inventory configurations, YAML syntax, and conditional execution paths. Dealing with real-world setup hurdles, like SSH authentication errors, privilege management, and configuration syntax bugs, greatly improved my debugging and troubleshooting approach. Beyond the technical aspect, the project emphasized the value of clear team communication, structured delegation, and collaborative effort. Ultimately, this experience demonstrated how combining containerization with automated configuration leads to consistent, reliable, and scalable server management in real-world infrastructure.
           </div>
         </div>
       </div>
@@ -310,7 +337,7 @@ button { cursor: pointer; }
 
 <footer class="footer">
   <div class="shell">
-    <span>© 2026 OPSFOLIO · CPE 212 GROUP PORTFOLIO</span>
+    <span>© 2026 GROUP 6 · CPE 212 GROUP PORTFOLIO</span>
     <span>Built to build. Automated to deliver.</span>
   </div>
 </footer>
@@ -331,7 +358,7 @@ button { cursor: pointer; }
 const members = [
   { name: 'Beatrice Gillianne Dueñas', first: 'Beatrice’s', initial: 'BD', role: 'Infrastructure & Documentation', accent: '#d9ff45' },
   { name: 'Gary Abraham Muralla', first: 'Gary’s', initial: 'GM', role: 'Containers & Deployment', accent: '#69d1f3' },
-  { name: 'Keanne Estrabo', first: 'Keanne’s', initial: 'KE', role: 'Automation & Quality', accent: '#ff967e' }
+  { name: 'Keane Estrabo', first: 'Keane’s', initial: 'KE', role: 'Automation & Quality', accent: '#ff967e' }
 ];
 
 const work = [
@@ -339,36 +366,106 @@ const work = [
   {
     prelim: [
       {
-        title: 'HOA 1.1: Linux Basic Commands',
+        title: 'HOA 1.1: Creating Virtual Machines',
         tag: 'LINUX',
-        text: 'Foundational Linux administration, environment setup, directory navigation, and file management CLI operations.',
-        image: 'https://images.unsplash.com/photo-1629654297299-c8506221ca97?auto=format&fit=crop&w=800&q=80',
-        link: 'https://github.com/your-org/beatrice-prelim-1'
+        text: 'Setting up and managing virtual machines for development and testing environments.',
+        image: 'images/duenas/h1.png',
+        link: 'https://drive.google.com/file/d/1qI2xBJ_LUWWEGciHVmV4hl23OcP-BNOV/view?usp=drive_link'
       },
       {
-        title: 'HOA 1.2: User & Group Management',
+        title: 'HOA 2.1: SSH Key-Based Authentication and GIT Setup',
         tag: 'LINUX',
-        text: 'Configuring user privileges, sudoers files, permission modes, and system ownership policies.',
-        image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80',
-        link: 'https://github.com/your-org/beatrice-prelim-2'
+        text: 'Setting up SSH keys for secure remote access and configuring GIT for version control.',
+        image: 'images/duenas/h2.png',
+        link: 'https://drive.google.com/file/d/1KveesgJGKwSL2BB1ZluXJBnaC7UQdwKx/view?usp=drive_link'
+      },
+      {
+        title: 'HOA 3.1: Install SSH server on CentOS or RHEL 8',
+        tag: 'LINUX',
+        text: 'Installing and configuring the SSH server on CentOS or RHEL 8 for secure remote access.',
+        image: 'images/duenas/h3.png',
+        link: 'https://drive.google.com/file/d/1IeGXfe6CVBnvOpi1Zxa0JhNbPpmnC1j8/view?usp=drive_link'
+      },
+      {
+        title: 'HOA 4.1: Ansible Basics',
+        tag: 'ANSIBLE',
+        text: 'Introduction to Ansible for automating infrastructure management tasks.',
+        image: 'images/duenas/h4.png',
+        link: 'https://drive.google.com/file/d/136-1VF4o_B19gP6GobZKJKuBibL4l_J-/view?usp=drive_link'
+      },
+      {
+        title: 'HOA 5.1: Implement Ansible Roles in PLaybooks',
+        tag: 'ANSIBLE',
+        text: 'Implementing and managing Ansible roles within playbooks for organized and reusable automation.',
+        image: 'images/duenas/h5.png',
+        link: 'https://drive.google.com/file/d/1LDOQUFPXqtIzy1m-Qfleaxwx_Z_NM1Tv/view?usp=drive_link'
+      },
+      {
+        title: 'Prelim Skills Exam',
+        tag: 'EXAM',
+        text: 'An assessment of all the skills learned in the preliminary period.',
+        image: 'images/duenas/pexam.png',
+        link: 'https://drive.google.com/file/d/17T5BY8QPZ-VAGHZOfDQbpS52FrqyfBDU/view?usp=drive_link'
       }
     ],
     midterm: [
       {
-        title: 'HOA 2.1: Ansible Inventory & Ad-hoc',
+        title: 'HOA 6.1: Targeting Specific Nodes',
         tag: 'ANSIBLE',
-        text: 'Configuration management exercises using inventories, ad-hoc orchestration commands, and target node verification.',
-        image: 'https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?auto=format&fit=crop&w=800&q=80',
-        link: 'https://github.com/your-org/beatrice-midterm-1'
+        text: 'Automating multi-node server configuration tasks using structured Ansible playbooks and modular roles.',
+        image: 'images/duenas/h6.png',
+        link: 'https://drive.google.com/file/d/1nHq9OX-8z_CN13DM0_2CG6ZEDRSDthpY/view?usp=drive_link'
+      },
+      {
+        title: 'HOA 7.1: Managing Files and Creating Roles in Ansible',
+        tag: 'ANSIBLE',
+        text: 'Managing files and creating reusable roles in Ansible for efficient infrastructure automation.',
+        image: 'images/duenas/h7.png',
+        link: 'https://drive.google.com/file/d/1MwsOV9b2uSxofYN1LVWMq6K87rL7Zpa4/view?usp=drive_link'
+      },
+      {
+        title: 'HOA 8.1: Install, Configure, and Manage Enterprise Availability Monitoring via Ansible',
+        tag: 'ANSIBLE',
+        text: 'Installing, configuring, and managing NagiOS for enterprise availability monitoring using Ansible automation.',
+        image: 'images/duenas/h8.png',
+        link: 'https://drive.google.com/file/d/1Mcf6Z_LPgl6OOp0S-LhZa7HtSWL0yC0I/view?usp=drive_link'
+      },
+      {
+        title: 'HOA 10.1: Install, Configure, and Manage Enterprise Log Monitoring via Ansible',
+        tag: 'ANSIBLE',
+        text: 'Installing, configuring, and managing Elastic Stack for enterprise log monitoring using Ansible automation.',
+        image: 'images/duenas/h10.png',
+        link: 'https://drive.google.com/file/d/1u3n4SMYX6yVXjVUdZAtGI-eBZj1BrqVw/view?usp=drive_link'
+      },
+      {
+        title: 'Midterm Skills Exam',
+        tag: 'EXAM',
+        text: 'An assessment of all the skills learned in the midterm period.',
+        image: 'images/duenas/mexam.png',
+        link: 'https://drive.google.com/file/d/1VL4IElZLcGrr9IoLBkjY0RYD_1wPpdSf/view?usp=drive_link'
       }
     ],
     final: [
       {
-        title: 'HOA 3.1: Docker Engine Deployment',
+        title: 'HOA 11.1: Containerization',
         tag: 'DOCKER',
-        text: 'Containerized application delivery and Nginx configuration across multiple target host environments.',
-        image: 'https://images.unsplash.com/photo-1607799279861-4dd421887fb3?auto=format&fit=crop&w=800&q=80',
-        link: 'https://github.com/your-org/beatrice-final-1'
+        text: 'Introduction to containerization using Docker, including building and running containers for application deployment.',
+        image: 'images/duenas/h11.png',
+        link: 'https://drive.google.com/file/d/1BwqDf1zT0msnNbuvIP66HGutPv1MKnQP/view?usp=drive_link'
+      },
+      {
+        title: 'HOA 12.1: Build a Sample Web App in a Docker Container',
+        tag: 'DOCKER',
+        text: 'Introduction to containerization using Docker, including building and running containers for application deployment.',
+        image: 'images/duenas/h12.png',
+        link: 'https://drive.google.com/file/d/1q0E6zzwg1Rx761uR_FgSnxjpDqd7rtmE/view?usp=drive_link'
+      },
+      {
+        title: 'Final Skills Exam',
+        tag: 'EXAM',
+        text: 'An assessment of all the skills learned in the final period, focusing on containerization and deployment.',
+        image: 'images/duenas/fexam.png',
+        link: 'https://drive.google.com/file/d/1Bqjg59uqsg1uRJdh2n7VPfbk1ZrSlt-t/view?usp=drive_link'
       }
     ]
   },
@@ -376,59 +473,185 @@ const work = [
   {
     prelim: [
       {
-        title: 'HOA 1.1: Storage & Partitioning',
+        title: 'HOA 1.1: Creating Virtual Machines',
         tag: 'LINUX',
-        text: 'Managing LVM volumes, disk mounting strategies, swap configuration, and filesystem formatting.',
-        image: 'https://images.unsplash.com/photo-1597852074816-d933c7d2b988?auto=format&fit=crop&w=800&q=80',
-        link: 'https://github.com/your-org/gary-prelim-1'
+        text: 'Setting up and managing virtual machines for development and testing environments.',
+        image: 'images/muralla/h1.png',
+        link: 'https://docs.google.com/document/d/1OuRQqFJc4-Ksu9JfnvNOdzESk7TcVOsoKCtG6DZKGys/edit?usp=drive_link'
+      },
+      {
+        title: 'HOA 2.1: SSH Key-Based Authentication and GIT Setup',
+        tag: 'LINUX',
+        text: 'Setting up SSH keys for secure remote access and configuring GIT for version control.',
+        image: 'images/muralla/h2.png',
+        link: 'https://docs.google.com/document/d/1jqUnRrVv2XUwktnmAozKyfWTuzk46U7YPsnfFN1hiOc/edit?usp=drive_link'
+      },
+      {
+        title: 'HOA 3.1: Install SSH server on CentOS or RHEL 8',
+        tag: 'LINUX',
+        text: 'Installing and configuring the SSH server on CentOS or RHEL 8 for secure remote access.',
+        image: 'images/muralla/h3.png',
+        link: 'https://docs.google.com/document/d/12wvJuAPNucvApWo7gepnQPwh3Raj5PWnjVzQ-KNMEC4/edit?usp=drive_link'
+      },
+      {
+        title: 'HOA 4.1: Ansible Basics',
+        tag: 'ANSIBLE',
+        text: 'Introduction to Ansible for automating infrastructure management tasks.',
+        image: 'images/muralla/h4.png',
+        link: 'https://github.com/gamurs/CPE232_GaryMuralla'
+      },
+      {
+        title: 'HOA 5.1: Implement Ansible Roles in PLaybooks',
+        tag: 'ANSIBLE',
+        text: 'Implementing and managing Ansible roles within playbooks for organized and reusable automation.',
+        image: 'images/muralla/h5.png',
+        link: 'https://docs.google.com/document/d/1kJBAco9_dQTzb9NucMJdRPcffw0STP27wsd1cBV0NFY/edit?usp=drive_link'
+      },
+      {
+        title: 'Prelim Skills Exam',
+        tag: 'EXAM',
+        text: 'An assessment of all the skills learned in the preliminary period.',
+        image: 'images/muralla/pexam.png',
+        link: 'https://docs.google.com/document/d/1bjCQZ1kyybZIc2ke8C04Dr2J5looyvN24NQma7wgIrs/edit?usp=drive_link'
       }
     ],
     midterm: [
       {
-        title: 'HOA 2.1: Ansible Playbooks & Roles',
+        title: 'HOA 6.1: Targeting Specific Nodes',
         tag: 'ANSIBLE',
         text: 'Automating multi-node server configuration tasks using structured Ansible playbooks and modular roles.',
-        image: 'https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?auto=format&fit=crop&w=800&q=80',
-        link: 'https://github.com/your-org/gary-midterm-1'
+        image: 'images/muralla/h6.png',
+        link: 'https://github.com/gamurs/TargetingSpecificNodes'
+      },
+      {
+        title: 'HOA 7.1: Managing Files and Creating Roles in Ansible',
+        tag: 'ANSIBLE',
+        text: 'Managing files and creating reusable roles in Ansible for efficient infrastructure automation.',
+        image: 'images/muralla/h7.png',
+        link: 'https://github.com/gamurs/CPE232_GaryMuralla'
+      },
+      {
+        title: 'HOA 8.1: Install, Configure, and Manage Enterprise Availability Monitoring via Ansible',
+        tag: 'ANSIBLE',
+        text: 'Installing, configuring, and managing NagiOS for enterprise availability monitoring using Ansible automation.',
+        image: 'images/muralla/h8.png',
+        link: 'https://github.com/gamurs/CPE212_Muralla-NagiOS_Installation'
+      },
+      {
+        title: 'Midterm Skills Exam',
+        tag: 'EXAM',
+        text: 'An assessment of all the skills learned in the midterm period.',
+        image: 'images/muralla/mexam.png',
+        link: 'https://github.com/gamurs/CPE212_MSE_MURALLA'
       }
     ],
     final: [
       {
-        title: 'HOA 3.1: Multi-Container Compose Stack',
+        title: 'HOA 11.1: Containerization',
         tag: 'DOCKER',
-        text: 'Orchestrating microservices and Nginx web applications using Docker Compose v2 stack definitions.',
-        image: 'https://images.unsplash.com/photo-1607799279861-4dd421887fb3?auto=format&fit=crop&w=800&q=80',
-        link: 'https://github.com/your-org/gary-final-1'
+        text: 'Introduction to containerization using Docker, including building and running containers for application deployment.',
+        image: 'images/muralla/h11.png',
+        link: 'https://github.com/gamurs/DockerInstall'
+      },
+      {
+        title: 'Final Skills Exam',
+        tag: 'EXAM',
+        text: 'An assessment of all the skills learned in the final period, focusing on containerization and deployment.',
+        image: 'images/muralla/fexam.png',
+        link: 'https://github.com/gamurs/Final_Exam_Muralla'
       }
     ]
   },
-  // Developer 2: Keanne Estrabo
+  // Developer 2: Keane Estrabo
   {
     prelim: [
       {
-        title: 'HOA 1.1: Bash Scripting & Automation',
+        title: 'HOA 1.1: Creating Virtual Machines',
         tag: 'LINUX',
-        text: 'Automating system diagnostic checks, environment setups, and log parsing with custom Bash scripts.',
-        image: 'https://images.unsplash.com/photo-1629654297299-c8506221ca97?auto=format&fit=crop&w=800&q=80',
-        link: 'https://github.com/your-org/keanne-prelim-1'
+        text: 'Setting up and managing virtual machines for development and testing environments.',
+        image: 'images/estrabo/h1.png',
+        link: 'https://drive.google.com/file/d/1m50YM_3Z78DEe6peAWsaZpUGZLnx-oGb/view?usp=drive_link'
+      },
+      {
+        title: 'HOA 2.1: SSH Key-Based Authentication and GIT Setup',
+        tag: 'LINUX',
+        text: 'Setting up SSH keys for secure remote access and configuring GIT for version control.',
+        image: 'images/estrabo/h2.png',
+        link: 'https://drive.google.com/file/d/1HoUirrpYAgH8GOhFS06LRzgzkmYzRXsD/view?usp=drive_link'
+      },
+      {
+        title: 'HOA 3.1: Install SSH server on CentOS or RHEL 8',
+        tag: 'LINUX',
+        text: 'Installing and configuring the SSH server on CentOS or RHEL 8 for secure remote access.',
+        image: 'images/estrabo/h3.png',
+        link: 'https://drive.google.com/file/d/1qDnxejZB6Ubn_Y3mR5xiJLKfpXuq0vdo/view?usp=drive_link'
+      },
+      {
+        title: 'HOA 4.1: Ansible Basics',
+        tag: 'ANSIBLE',
+        text: 'Introduction to Ansible for automating infrastructure management tasks.',
+        image: 'images/estrabo/h4.png',
+        link: 'https://drive.google.com/file/d/1zgUgFXVj39a1vszxCO7oxt0A2pLSf88c/view?usp=drive_link'
+      },
+      {
+        title: 'HOA 5.1: Implement Ansible Roles in PLaybooks',
+        tag: 'ANSIBLE',
+        text: 'Implementing and managing Ansible roles within playbooks for organized and reusable automation.',
+        image: 'images/estrabo/h5.png',
+        link: 'https://drive.google.com/file/d/1Sz9ck6T4gEkFOisurufX58ewJ0vJ1QqB/view?usp=drive_link'
+      },
+      {
+        title: 'Prelim Skills Exam',
+        tag: 'EXAM',
+        text: 'An assessment of all the skills learned in the preliminary period.',
+        image: 'images/estrabo/pexam.png',
+        link: 'https://drive.google.com/file/d/13XF81CPWgna76g1GOOmjs4H1qqBId-0t/view?usp=drive_link'
       }
     ],
     midterm: [
       {
-        title: 'HOA 2.1: Dynamic Ansible Fact Discovery',
+        title: 'HOA 6.1: Targeting Specific Nodes',
         tag: 'ANSIBLE',
-        text: 'Targeting heterogeneous operating systems conditionally using automated Ansible fact gathering.',
-        image: 'https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?auto=format&fit=crop&w=800&q=80',
-        link: 'https://github.com/your-org/keanne-midterm-1'
+        text: 'Automating multi-node server configuration tasks using structured Ansible playbooks and modular roles.',
+        image: 'images/estrabo/h6.png',
+        link: 'https://drive.google.com/file/d/1sA2AXVx6NOP_N5rm0Lha5Huws7i8pdUx/view?usp=drive_link'
+      },
+      {
+        title: 'HOA 7.1: Managing Files and Creating Roles in Ansible',
+        tag: 'ANSIBLE',
+        text: 'Managing files and creating reusable roles in Ansible for efficient infrastructure automation.',
+        image: 'images/estrabo/h7.png',
+        link: 'https://drive.google.com/file/d/1E_js6AHTkVlUf4mmX9bhT8K10ipmxG55/view?usp=drive_link'
+      },
+      {
+        title: 'HOA 10.1: Install, Configure, and Manage Enterprise Log Monitoring via Ansible',
+        tag: 'ANSIBLE',
+        text: 'Installing, configuring, and managing Elastic Stack for enterprise log monitoring using Ansible automation.',
+        image: 'images/estrabo/h10.png',
+        link: 'https://drive.google.com/file/d/14qKydcw7WUqxGDxA4LL4CNWl_rHLz4b6/view?usp=drive_link'
+      },
+      {
+        title: 'Midterm Skills Exam',
+        tag: 'EXAM',
+        text: 'An assessment of all the skills learned in the midterm period.',
+        image: 'images/estrabo/mexam.png',
+        link: 'https://drive.google.com/file/d/15GjQ1ACd05iYSDeavZW-2HzVLE8ZmjzN/view?usp=drive_link'
       }
     ],
     final: [
       {
-        title: 'HOA 3.1: Automated CI/CD Container Testing',
+        title: 'HOA 11.1: Containerization',
         tag: 'DOCKER',
-        text: 'Validating Docker container builds, security scans, and deployment readiness in automated test pipelines.',
-        image: 'https://images.unsplash.com/photo-1607799279861-4dd421887fb3?auto=format&fit=crop&w=800&q=80',
-        link: 'https://github.com/your-org/keanne-final-1'
+        text: 'Introduction to containerization using Docker, including building and running containers for application deployment.',
+        image: 'images/estrabo/h11.png',
+        link: 'https://drive.google.com/file/d/1NUZre8LMzKVa5arSOBktPUyUKV-oO5vH/view?usp=drive_link'
+      },
+      {
+        title: 'Final Skills Exam',
+        tag: 'EXAM',
+        text: 'An assessment of all the skills learned in the final period, focusing on containerization and deployment.',
+        image: 'images/estrabo/fexam.png',
+        link: 'https://drive.google.com/file/d/1R4Wkc9P6T5VM7MMxVpkYS4-5RoqjOdk1/view?usp=drive_link'
       }
     ]
   }

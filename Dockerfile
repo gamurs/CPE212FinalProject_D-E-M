@@ -1,7 +1,7 @@
 FROM nginx:alpine
 
-RUN rm /usr/share/nginx/html/index.html
+RUN rm -rf /usr/share/nginx/html
 
-COPY src/chindex.html /usr/share/nginx/html/index.html
+COPY src/ /usr/share/nginx/html/
 
 EXPOSE 80
