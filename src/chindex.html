@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Opsfolio | CPE 212 Group Portfolio</title>
+<style>
+:root {
+  --navy: #091722;
+  --navy2: #0d202d;
+  --cream: #f2f0e8;
+  --white: #f7f8fb;
+  --muted: #9eb0bd;
+  --lime: #d9ff45;
+  --blue: #69d1f3;
+  --coral: #ff967e;
+  --line: rgba(220, 235, 245, 0.18);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--cream); color: var(--navy); font-family: Inter, Arial, Helvetica, sans-serif; }
+button, a { font: inherit; }
+button { cursor: pointer; }
+.shell { width: min(1180px, 92%); margin: auto; }
+
+/* Hero Section */
+.hero { min-height: 570px; background-color: var(--navy); color: var(--white); position: relative; overflow: hidden; background-image: linear-gradient(rgba(255, 255, 255, .035) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .035) 1px, transparent 1px); background-size: 78px 78px; }
+.nav { height: 86px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255, 255, 255, .07); }
+.brand { display: flex; gap: 12px; align-items: center; font-weight: 850; letter-spacing: -.04em; }
+.mark { width: 23px; height: 23px; display: inline-block; position: relative; transform: rotate(-7deg); }
+.mark:before, .mark:after { content: ""; position: absolute; border-radius: 1px; }
+.mark:before { width: 10px; height: 20px; background: var(--lime); left: 0; top: 1px; }
+.mark:after { width: 10px; height: 13px; background: var(--blue); right: 0; bottom: 0; box-shadow: 0 -9px 0 -1px var(--lime); }
+.navlinks { display: flex; gap: 30px; align-items: center; }
+.navlinks a { color: #c6d0d8; text-decoration: none; font-size: 13px; font-weight: 700; }
+.navlinks a:hover { color: var(--lime); }
+.navlinks .outline { border: 1px solid #53616b; padding: 13px 18px; color: white; }
+.hero-content { display: grid; grid-template-columns: 1.2fr .8fr; align-items: center; min-height: 470px; gap: 30px; }
+.eyebrow { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--blue); font-weight: 800; }
+.eyebrow:before { content: ""; display: inline-block; width: 25px; height: 2px; background: var(--lime); vertical-align: middle; margin-right: 12px; }
+.hero h1 { font-size: clamp(48px, 7vw, 82px); line-height: .87; letter-spacing: -.075em; margin: 30px 0 28px; font-weight: 900; }
+.hero h1 em { font-family: Georgia, serif; font-weight: 400; color: var(--lime); letter-spacing: -.06em; }
+.hero p { max-width: 480px; color: #b5c3ce; line-height: 1.7; font-size: 15px; }
+.orbit { width: min(330px, 75vw); aspect-ratio: 1; border: 1px solid rgba(220, 235, 245, .24); border-radius: 50%; margin: auto; position: relative; display: grid; place-items: center; }
+.orbit:before, .orbit:after { content: ""; position: absolute; border: 1px dashed rgba(220, 235, 245, .2); border-radius: 50%; }
+.orbit:before { inset: 11%; }
+.orbit:after { inset: 24%; border-style: solid; }
+.orbit-center { width: 88px; height: 88px; border-radius: 50%; background: #06111a; display: grid; place-items: center; }
+.orbit-center .mark { transform: scale(1.8) rotate(-7deg); }
+.dot { position: absolute; width: 9px; height: 9px; border-radius: 50%; background: var(--lime); right: 5%; bottom: 27%; box-shadow: 0 0 18px #d9ff45; }
+.dot.blue { background: var(--blue); left: 27%; bottom: 14%; box-shadow: 0 0 18px var(--blue); }
+
+/* Team Section */
+.team { padding: 55px 0 75px; }
+.section-head { display: grid; grid-template-columns: .5fr 1fr .7fr; gap: 20px; align-items: start; margin-bottom: 42px; }
+.section-no { font-size: 10px; letter-spacing: .18em; color: #60717b; font-weight: 800; }
+.section-head h2 { font-size: clamp(32px, 4vw, 48px); letter-spacing: -.07em; line-height: .95; margin: 0; }
+.section-head p { color: #687780; font-size: 13px; line-height: 1.65; max-width: 230px; margin: 6px 0 0; }
+.members { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid #c9c9c0; border-bottom: 1px solid #c9c9c0; }
+.member { min-height: 300px; padding: 25px 30px; background: #fff; border-right: 1px solid #d2d1ca; display: flex; flex-direction: column; align-items: flex-start; text-align: left; position: relative; transition: .2s; border-bottom: 3px solid transparent; }
+.member:last-child { border-right: 0; }
+.member:hover, .member.active { background: #fafbf6; border-bottom-color: var(--accent); transform: translateY(-3px); }
+.member .number { align-self: flex-end; font-size: 9px; color: #7d8a91; }
+.avatar { width: 82px; height: 82px; margin: 25px 0 48px; background: linear-gradient(145deg, var(--accent) 0 50%, color-mix(in srgb, var(--accent), #000 15%) 50%); display: grid; place-items: end start; padding: 9px; color: #07131c; font-weight: 950; font-size: 18px; letter-spacing: -.06em; }
+.member strong { font-size: 17px; letter-spacing: -.04em; line-height: 1.1; max-width: 180px; }
+.role { font-size: 9px; letter-spacing: .12em; color: #7a858b; text-transform: uppercase; margin-top: 10px; max-width: 190px; line-height: 1.5; }
+.arrow { position: absolute; right: 27px; bottom: 28px; font-size: 22px; color: var(--navy); }
+
+/* Coursework / Portfolio Section */
+.portfolio { background: var(--navy); color: var(--white); padding: 30px 0 80px; min-height: auto; }
+.switchbar { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+.switch-label { font-size: 10px; letter-spacing: .17em; color: var(--muted); font-weight: 800; }
+.switches { display: flex; gap: 8px; flex-wrap: wrap; }
+.switch { border: 1px solid var(--line); background: transparent; color: #b8c6cf; padding: 10px 13px; font-size: 11px; display: flex; align-items: center; gap: 9px; }
+.switch b { background: #243642; color: white; padding: 5px; font-size: 9px; }
+.switch.active { background: var(--lime); border-color: var(--lime); color: #081620; }
+.switch.active b { background: #081620; color: white; }
+.portfolio-title { display: flex; justify-content: space-between; align-items: center; gap: 20px; margin: 50px 0 32px; }
+.portfolio-title h2 { font-size: clamp(34px, 5vw, 54px); letter-spacing: -.07em; margin: 0; }
+.portfolio-title h2 span { color: var(--lime); }
+.viewing { border: 1px solid var(--line); padding: 13px; display: flex; gap: 12px; align-items: center; font-size: 9px; letter-spacing: .12em; color: var(--muted); text-transform: uppercase; }
+.viewing b { display: block; color: white; font-size: 11px; letter-spacing: .04em; margin-top: 5px; }
+.viewing .mini { background: var(--lime); color: #07131c; padding: 10px; font-weight: 900; }
+
+/* Period Selector Tabs */
+.period-tabs { display: flex; gap: 10px; margin-bottom: 28px; flex-wrap: wrap; }
+.period-tab { background: transparent; border: 1px solid var(--line); color: var(--muted); padding: 11px 20px; font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; transition: .2s; }
+.period-tab:hover, .period-tab.active { background: var(--lime); color: #081620; border-color: var(--lime); }
+
+/* Dynamic Cards Grid */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 20px; }
+.course { padding: 25px 26px 28px; min-height: 240px; border: 1px solid var(--line); background: #0d202d; color: inherit; text-align: left; transition: .2s; position: relative; display: flex; flex-direction: column; justify-content: space-between; }
+.course:hover { background: #102b3b; border-color: var(--lime); transform: translateY(-2px); }
+.course-top { display: flex; justify-content: space-between; color: #83a0b2; font-size: 9px; letter-spacing: .13em; }
+.tag { display: inline-block; border: 1px solid var(--lime); color: var(--lime); padding: 5px 9px; font-size: 9px; letter-spacing: .1em; font-weight: 900; margin: 24px 0 14px; width: fit-content; }
+.course h3 { font-size: 20px; font-weight: 600; letter-spacing: -.03em; margin: 0 0 10px; line-height: 1.25; }
+.course p { font-size: 12px; line-height: 1.6; color: #9fb1bf; margin: 0; }
+.course .open { align-self: flex-end; color: var(--lime); font-size: 20px; margin-top: 15px; }
+
+/* Dynamic Stretch Detail Section */
+.detail { margin-top: 28px; border: 1px solid var(--line); padding: 28px; display: none; background: #0d202d; transition: all 0.3s ease; }
+.detail.show { display: flex; flex-direction: column; gap: 18px; }
+.detail h3 { margin: 0; font-size: 26px; letter-spacing: -.04em; color: var(--white); }
+.detail-media { width: 100%; max-height: 520px; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; background: #06111a; }
+.detail-media img { width: 100%; height: auto; max-height: 520px; object-fit: cover; display: block; }
+.detail p { color: #b3c1cb; line-height: 1.7; font-size: 14px; margin: 0; max-width: 900px; }
+.detail-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 6px; }
+.small-btn { border: 1px solid #536775; background: transparent; color: white; padding: 11px 16px; font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; cursor: pointer; text-decoration: none; }
+.small-btn:hover { border-color: var(--lime); color: var(--lime); }
+.highlight-btn { border-color: var(--lime) !important; color: var(--lime) !important; display: inline-flex; align-items: center; gap: 6px; }
+.highlight-btn:hover { background: rgba(217, 255, 69, 0.15); }
+
+/* Reflections Section */
+.reflection { padding: 75px 0; background: #e8e6dd; }
+.reflection-grid { display: grid; grid-template-columns: .65fr 1.35fr; gap: 50px; }
+.reflection h2 { font-size: clamp(38px, 5vw, 58px); letter-spacing: -.07em; line-height: .95; margin: 15px 0; }
+.reflection-intro { color: #69777d; line-height: 1.7; font-size: 14px; max-width: 330px; }
+.reflection-list { display: grid; gap: 12px; }
+.reflection-item { background: #fff; border: 1px solid #d3d2ca; }
+.reflection-toggle { width: 100%; border: 0; background: transparent; padding: 20px 22px; display: flex; justify-content: space-between; text-align: left; font-weight: 800; color: var(--navy); }
+.reflection-body { display: none; padding: 0 22px 22px; color: #65737a; font-size: 13px; line-height: 1.7; }
+.reflection-item.open .reflection-body { display: block; }
+.reflection-toggle span:last-child { font-size: 20px; color: #839198; }
+
+/* Footer */
+.footer { background: var(--navy); color: #9aabb7; padding: 28px 0; font-size: 11px; }
+.footer .shell { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+
+/* Modal */
+.modal { position: fixed; inset: 0; background: rgba(0,0,0,.72); display: none; align-items: center; justify-content: center; padding: 20px; z-index: 5; }
+.modal.show { display: flex; }
+.modal-box { width: min(540px, 100%); background: var(--cream); padding: 30px; color: var(--navy); position: relative; }
+.modal-close { position: absolute; right: 18px; top: 15px; border: 0; background: transparent; font-size: 25px; cursor: pointer; }
+.modal-box h3 { font-size: 30px; letter-spacing: -.06em; margin: 15px 0; }
+.modal-box p { line-height: 1.7; color: #58666d; font-size: 14px; }
+.modal-kicker { font-size: 10px; letter-spacing: .16em; color: #687780; font-weight: 800; }
+.modal-link { display: inline-block; margin-top: 10px; color: #102b3b; font-weight: 800; text-decoration: none; border-bottom: 2px solid var(--lime); padding-bottom: 4px; }
+
+@media(max-width: 760px) {
+  .hero-content { grid-template-columns: 1fr; padding: 55px 0; }
+  .orbit { width: 210px; margin: 10px auto 30px; }
+  .navlinks { gap: 12px; }
+  .navlinks a { font-size: 11px; }
+  .navlinks .outline { padding: 9px; }
+  .section-head { grid-template-columns: 1fr 2fr; }
+  .section-head p { grid-column: 2; }
+  .members { grid-template-columns: 1fr; }
+  .member { min-height: 230px; border-right: 0; border-bottom: 1px solid #d2d1ca; }
+  .member:last-child { border-bottom: 0; }
+  .avatar { margin: 20px 0 24px; }
+  .portfolio-title { align-items: flex-start; flex-direction: column; }
+  .reflection-grid { grid-template-columns: 1fr; gap: 25px; }
+  .switchbar { align-items: flex-start; flex-direction: column; }
+  .hero { min-height: auto; }
+  .hero-content { min-height: 0; }
+  .hero h1 { font-size: 58px; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero" id="home">
+  <div class="shell">
+    <nav class="nav">
+      <a class="brand" href="#home" style="color:white;text-decoration:none"><i class="mark"></i> Opsfolio</a>
+      <div class="navlinks">
+        <a href="#team">Team</a>
+        <a href="#coursework">Coursework</a>
+        <a class="outline" href="#reflections">Reflections ↗</a>
+      </div>
+    </nav>
+    <div class="hero-content">
+      <div>
+        <div class="eyebrow">CPE 212 · Group Portfolio</div>
+        <h1>We build.<br>We automate.<br><em>We deliver.</em></h1>
+        <p>A collection of our hands-on activities, examinations, and lessons learned in managing enterprise servers.</p>
+      </div>
+      <div class="orbit">
+        <div class="orbit-center"><i class="mark"></i></div>
+        <i class="dot"></i>
+        <i class="dot blue"></i>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Team Section -->
+  <section class="team" id="team">
+    <div class="shell">
+      <div class="section-head">
+        <div class="section-no">01 / TEAM</div>
+        <h2>Three minds,<br>one system.</h2>
+        <p>Select a member to explore their individual course portfolio and reflection.</p>
+      </div>
+      <div class="members">
+        <button class="member active" style="--accent:var(--lime)" data-member="0">
+          <span class="number">01</span>
+          <span class="avatar">BD</span>
+          <strong>Beatrice Gillianne Dueñas</strong>
+          <span class="role">Infrastructure &amp; Documentation</span>
+          <span class="arrow">↗</span>
+        </button>
+        <button class="member" style="--accent:var(--blue)" data-member="1">
+          <span class="number">02</span>
+          <span class="avatar">GM</span>
+          <strong>Gary Abraham Muralla</strong>
+          <span class="role">Containers &amp; Deployment</span>
+          <span class="arrow">↗</span>
+        </button>
+        <button class="member" style="--accent:var(--coral)" data-member="2">
+          <span class="number">03</span>
+          <span class="avatar">KE</span>
+          <strong>Keanne Estrabo</strong>
+          <span class="role">Automation &amp; Quality</span>
+          <span class="arrow">↗</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coursework Section -->
+  <section class="portfolio" id="coursework">
+    <div class="shell">
+      <div class="switchbar">
+        <span class="switch-label">CHOOSE A PORTFOLIO</span>
+        <div class="switches">
+          <button class="switch active" data-member="0"><b>BD</b> Beatrice Gillianne Dueñas</button>
+          <button class="switch" data-member="1"><b>GM</b> Gary Abraham Muralla</button>
+          <button class="switch" data-member="2"><b>KE</b> Keanne Estrabo</button>
+        </div>
+      </div>
+
+      <div class="portfolio-title">
+        <div>
+          <div class="eyebrow">02 / Coursework</div>
+          <h2><span id="memberFirst">Beatrice’s</span> portfolio.</h2>
+        </div>
+        <div class="viewing">
+          <span class="mini" id="memberInitial">BD</span>
+          <span>Viewing work by<b id="memberName">Beatrice Gillianne Dueñas</b></span>
+        </div>
+      </div>
+
+      <!-- Period Selection Tabs -->
+      <div class="period-tabs">
+        <button class="period-tab active" data-period="prelim">Preliminary Period</button>
+        <button class="period-tab" data-period="midterm">Midterm Period</button>
+        <button class="period-tab" data-period="final">Final Period</button>
+      </div>
+
+      <!-- Dynamic HOA Cards Grid -->
+      <div class="cards" id="courseCards"></div>
+
+      <!-- Dynamic Stretch Detail View -->
+      <div class="detail" id="courseDetail">
+        <h3 id="detailTitle">Select an HOA</h3>
+        <div class="detail-media">
+          <img id="detailImage" src="" alt="HOA Preview" />
+        </div>
+        <p id="detailText">Choose a coursework card above to inspect the submitted activity.</p>
+        <div class="detail-actions">
+          <a id="detailLink" href="#" target="_blank" rel="noopener" class="small-btn highlight-btn">Open Submission Link ↗</a>
+          <button class="small-btn" id="closeDetail">Close details</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reflections Section -->
+  <section class="reflection" id="reflections">
+    <div class="shell reflection-grid">
+      <div>
+        <div class="section-no">03 / REFLECTIONS</div>
+        <h2>What we<br>learned.</h2>
+        <p class="reflection-intro">A space for each team member to share key takeaways, challenges, and lessons from the course. Select a reflection to expand it.</p>
+      </div>
+      <div class="reflection-list" id="reflectionList">
+        <div class="reflection-item open">
+          <button class="reflection-toggle">
+            <span>Beatrice Gillianne Dueñas</span>
+            <span>−</span>
+          </button>
+          <div class="reflection-body">
+            Developing proficiency in Linux system administration and infrastructure documentation provided crucial foundations for automating complex deployments. Navigating permissions, service configs, and playbook orchestration highlighted the power of consistency across production nodes.
+          </div>
+        </div>
+        <div class="reflection-item">
+          <button class="reflection-toggle">
+            <span>Gary Abraham Muralla</span>
+            <span>+</span>
+          </button>
+          <div class="reflection-body">
+            Mastering container isolation with Docker Engine and orchestrating services via Compose showed how runtime encapsulation bypasses host OS fragmentation. Ansible automation tied the entire delivery workflow together seamlessly.
+          </div>
+        </div>
+        <div class="reflection-item">
+          <button class="reflection-toggle">
+            <span>Keanne Estrabo</span>
+            <span>+</span>
+          </button>
+          <div class="reflection-body">
+            Validating automation playbooks across diverse operating system architectures demonstrated the importance of dynamic fact gathering and conditional execution in keeping deployments reliable.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="shell">
+    <span>© 2026 OPSFOLIO · CPE 212 GROUP PORTFOLIO</span>
+    <span>Built to build. Automated to deliver.</span>
+  </div>
+</footer>
+
+<!-- Profile Modal -->
+<div class="modal" id="memberModal" role="dialog" aria-modal="true" aria-labelledby="modalName">
+  <div class="modal-box">
+    <button class="modal-close" aria-label="Close">×</button>
+    <div class="modal-kicker">TEAM MEMBER PROFILE</div>
+    <h3 id="modalName">Beatrice Gillianne Dueñas</h3>
+    <p id="modalRole">Infrastructure &amp; Documentation</p>
+    <p>Choose this member's portfolio using the selector in the coursework section to explore their activities and reflection.</p>
+    <a class="modal-link" href="#coursework" id="modalGo">Explore portfolio ↗</a>
+  </div>
+</div>
+
+<script>
+const members = [
+  { name: 'Beatrice Gillianne Dueñas', first: 'Beatrice’s', initial: 'BD', role: 'Infrastructure & Documentation', accent: '#d9ff45' },
+  { name: 'Gary Abraham Muralla', first: 'Gary’s', initial: 'GM', role: 'Containers & Deployment', accent: '#69d1f3' },
+  { name: 'Keanne Estrabo', first: 'Keanne’s', initial: 'KE', role: 'Automation & Quality', accent: '#ff967e' }
+];
+
+const work = [
+  // Developer 0: Beatrice Gillianne Dueñas
+  {
+    prelim: [
+      {
+        title: 'HOA 1.1: Linux Basic Commands',
+        tag: 'LINUX',
+        text: 'Foundational Linux administration, environment setup, directory navigation, and file management CLI operations.',
+        image: 'https://images.unsplash.com/photo-1629654297299-c8506221ca97?auto=format&fit=crop&w=800&q=80',
+        link: 'https://github.com/your-org/beatrice-prelim-1'
+      },
+      {
+        title: 'HOA 1.2: User & Group Management',
+        tag: 'LINUX',
+        text: 'Configuring user privileges, sudoers files, permission modes, and system ownership policies.',
+        image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80',
+        link: 'https://github.com/your-org/beatrice-prelim-2'
+      }
+    ],
+    midterm: [
+      {
+        title: 'HOA 2.1: Ansible Inventory & Ad-hoc',
+        tag: 'ANSIBLE',
+        text: 'Configuration management exercises using inventories, ad-hoc orchestration commands, and target node verification.',
+        image: 'https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?auto=format&fit=crop&w=800&q=80',
+        link: 'https://github.com/your-org/beatrice-midterm-1'
+      }
+    ],
+    final: [
+      {
+        title: 'HOA 3.1: Docker Engine Deployment',
+        tag: 'DOCKER',
+        text: 'Containerized application delivery and Nginx configuration across multiple target host environments.',
+        image: 'https://images.unsplash.com/photo-1607799279861-4dd421887fb3?auto=format&fit=crop&w=800&q=80',
+        link: 'https://github.com/your-org/beatrice-final-1'
+      }
+    ]
+  },
+  // Developer 1: Gary Abraham Muralla
+  {
+    prelim: [
+      {
+        title: 'HOA 1.1: Storage & Partitioning',
+        tag: 'LINUX',
+        text: 'Managing LVM volumes, disk mounting strategies, swap configuration, and filesystem formatting.',
+        image: 'https://images.unsplash.com/photo-1597852074816-d933c7d2b988?auto=format&fit=crop&w=800&q=80',
+        link: 'https://github.com/your-org/gary-prelim-1'
+      }
+    ],
+    midterm: [
+      {
+        title: 'HOA 2.1: Ansible Playbooks & Roles',
+        tag: 'ANSIBLE',
+        text: 'Automating multi-node server configuration tasks using structured Ansible playbooks and modular roles.',
+        image: 'https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?auto=format&fit=crop&w=800&q=80',
+        link: 'https://github.com/your-org/gary-midterm-1'
+      }
+    ],
+    final: [
+      {
+        title: 'HOA 3.1: Multi-Container Compose Stack',
+        tag: 'DOCKER',
+        text: 'Orchestrating microservices and Nginx web applications using Docker Compose v2 stack definitions.',
+        image: 'https://images.unsplash.com/photo-1607799279861-4dd421887fb3?auto=format&fit=crop&w=800&q=80',
+        link: 'https://github.com/your-org/gary-final-1'
+      }
+    ]
+  },
+  // Developer 2: Keanne Estrabo
+  {
+    prelim: [
+      {
+        title: 'HOA 1.1: Bash Scripting & Automation',
+        tag: 'LINUX',
+        text: 'Automating system diagnostic checks, environment setups, and log parsing with custom Bash scripts.',
+        image: 'https://images.unsplash.com/photo-1629654297299-c8506221ca97?auto=format&fit=crop&w=800&q=80',
+        link: 'https://github.com/your-org/keanne-prelim-1'
+      }
+    ],
+    midterm: [
+      {
+        title: 'HOA 2.1: Dynamic Ansible Fact Discovery',
+        tag: 'ANSIBLE',
+        text: 'Targeting heterogeneous operating systems conditionally using automated Ansible fact gathering.',
+        image: 'https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?auto=format&fit=crop&w=800&q=80',
+        link: 'https://github.com/your-org/keanne-midterm-1'
+      }
+    ],
+    final: [
+      {
+        title: 'HOA 3.1: Automated CI/CD Container Testing',
+        tag: 'DOCKER',
+        text: 'Validating Docker container builds, security scans, and deployment readiness in automated test pipelines.',
+        image: 'https://images.unsplash.com/photo-1607799279861-4dd421887fb3?auto=format&fit=crop&w=800&q=80',
+        link: 'https://github.com/your-org/keanne-final-1'
+      }
+    ]
+  }
+];
+
+let selected = 0;
+let currentPeriod = 'prelim';
+
+function renderHOACards() {
+  const container = document.getElementById('courseCards');
+  const detailPanel = document.getElementById('courseDetail');
+  
+  detailPanel.classList.remove('show');
+
+  const periodItems = work[selected][currentPeriod] || [];
+
+  if (periodItems.length === 0) {
+    container.innerHTML = `<div style="color: var(--muted); padding: 24px; font-size: 13px; border: 1px dashed var(--line); grid-column: 1/-1;">No Hands-On Activities submitted for this period yet.</div>`;
+    return;
+  }
+
+  container.innerHTML = periodItems.map((item, index) => `
+    <button class="course" data-index="${index}">
+      <div>
+        <div class="course-top">
+          <span>${String(index + 1).padStart(2, '0')}</span>
+          <span>HANDS-ON ACTIVITY</span>
+        </div>
+        <span class="tag">${item.tag}</span>
+        <h3>${item.title}</h3>
+        <p>${item.text}</p>
+      </div>
+      <span class="open">↗</span>
+    </button>
+  `).join('');
+
+  container.querySelectorAll('.course').forEach(card => {
+    card.addEventListener('click', () => {
+      const idx = Number(card.dataset.index);
+      const item = periodItems[idx];
+
+      document.getElementById('detailTitle').textContent = item.title;
+      document.getElementById('detailText').textContent = item.text;
+      document.getElementById('detailImage').src = item.image;
+      document.getElementById('detailImage').alt = item.title;
+      document.getElementById('detailLink').href = item.link;
+
+      detailPanel.classList.add('show');
+      detailPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  });
+}
+
+// Period Tab Click Handling
+document.querySelectorAll('.period-tab').forEach(tab => {
+  tab.addEventListener('click', (e) => {
+    document.querySelectorAll('.period-tab').forEach(t => t.classList.remove('active'));
+    e.target.classList.add('active');
+    currentPeriod = e.target.dataset.period;
+    renderHOACards();
+  });
+});
+
+// Member Switch Handling
+function selectMember(index) {
+  selected = index;
+  const m = members[index];
+  
+  document.querySelectorAll('.member, .switch').forEach(el => {
+    el.classList.toggle('active', Number(el.dataset.member) === index);
+  });
+  
+  document.getElementById('memberFirst').textContent = m.first;
+  document.getElementById('memberInitial').textContent = m.initial;
+  document.getElementById('memberName').textContent = m.name;
+  
+  document.querySelectorAll('.reflection-item').forEach((el, i) => el.classList.toggle('open', i === index));
+  document.querySelectorAll('.reflection-toggle span:last-child').forEach((el, i) => el.textContent = i === index ? '−' : '+');
+
+  renderHOACards();
+}
+
+document.querySelectorAll('[data-member]').forEach(el => {
+  el.addEventListener('click', () => selectMember(Number(el.dataset.member)));
+});
+
+document.getElementById('closeDetail').addEventListener('click', () => {
+  document.getElementById('courseDetail').classList.remove('show');
+});
+
+// Reflection accordion handling
+document.querySelectorAll('.reflection-toggle').forEach((btn, i) => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    item.classList.toggle('open');
+    btn.querySelector('span:last-child').textContent = item.classList.contains('open') ? '−' : '+';
+  });
+});
+
+// Modal handling
+const modal = document.getElementById('memberModal');
+document.querySelectorAll('.member').forEach((btn, i) => {
+  btn.addEventListener('dblclick', () => {
+    document.getElementById('modalName').textContent = members[i].name;
+    document.getElementById('modalRole').textContent = members[i].role;
+    document.getElementById('modalGo').onclick = () => {
+      selectMember(i);
+      modal.classList.remove('show');
+    };
+    modal.classList.add('show');
+  });
+});
+
+document.querySelector('.modal-close').addEventListener('click', () => modal.classList.remove('show'));
+modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('show'); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') modal.classList.remove('show'); });
+
+// Initial Render
+renderHOACards();
+</script>
+</body>
+</html>

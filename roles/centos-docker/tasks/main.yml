@@ -1,0 +1,29 @@
+---
+
+- name: Install DNF core
+  package:
+    name:
+      - dnf-plugins-core
+    state: present
+
+- name: Remove existing Repo Directory if it exists
+  file:
+    path: /etc/yum.repos.d/docker-ce.repo
+    state: absent
+
+- name: Add Docker to CentOS Repository
+  get_url:
+    url: https://download.docker.com/linux/centos/docker-ce.repo
+    dest: /etc/yum.repos.d/docker-ce.repo
+    mode: 0644
+
+- name: Install Docker Engine and Compose
+  dnf:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-buildx-plugin
+      - docker-compose-plugin
+    state: present
+    update_cache: yes

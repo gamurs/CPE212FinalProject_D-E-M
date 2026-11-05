@@ -1,0 +1,50 @@
+---
+
+- hosts: centos_host
+  become: true
+  roles:
+  - centos-docker
+
+- hosts: ubuntu_host
+  become: true
+  roles:
+  - ubuntu-docker
+
+- hosts: all
+  become: true
+  tasks:
+  - name: Check if Docker is running
+    systemd:
+      name: docker
+      state: started
+      enabled: yes
+
+  - name: Create deployment directory
+    file:
+      path: /opt/finalproj-app
+      state: directory
+      mode: 0755
+
+  - name: Copy Dockerfile to directory
+    copy:
+      src: ./Dockerfile
+      dest: /opt/finalproj-app/
+      mode: 0644
+
+  - name: Copy docker-compose.yml to directory
+    copy:
+      src: ./docker-compose.yml
+      dest: /opt/finalproj-app/
+      mode: 0644
+
+  - name: Copy html to directory
+    copy:
+      src: ./src
+      dest: /opt/finalproj-app/
+      mode: 0644
+
+  - name: Build and Launch final proj container
+    community.docker.docker_compose_v2:
+      project_src: /opt/finalproj-app
+      state: present
+      build: always
